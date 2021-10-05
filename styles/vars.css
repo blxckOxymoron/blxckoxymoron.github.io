@@ -1,5 +1,18 @@
 :root {
-  --fn-16: 600 16px sans-serif;
-  --fn-24: 700 24px sans-serif;
-  --fn-32: 800 32px sans-serif;
+  --fn-sm: 600 18px Tw Cen MT, sans-serif;
+  --fn-m: 700 24px Tw Cen MT, sans-serif;
+  --fn-l: 800 32px Tw Cen MT, sans-serif;
+
+  --c-text: rgb(2, 4, 14);
+  --c-background: rgb(255, 254, 250);
+  --c-primary: #00f18b;
+
+  --s-header-h: 4rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-text: rgb(255, 254, 250);
+    --c-background: rgb(0, 2, 1);
+  }
 }

@@ -1,9 +1,25 @@
 body {
   margin: 0;
+  background-color: var(--c-background);
+  color: var(--c-text);
+  min-height: 100%;
+}
+
+* {
+  margin: 0;
+}
+
+h2 {
+  font: var(--fn-m);
+}
+
+.flicker-code {
+  font-family: monospace;
+  color: var(--c-primary);
 }
 
 header {
-  height: 4rem;
+  height: var(--s-header-h);
   margin: 0.5rem 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -25,10 +41,6 @@ header img {
   border-radius: 100%;
 }
 
-header h2 {
-  font: var(--fn-24);
-}
-
 header ul {
   list-style: none;
   display: -webkit-box;
@@ -40,11 +52,15 @@ header ul {
 }
 
 a {
-  font: var(--fn-16);
+  font: var(--fn-sm);
   color: inherit;
   text-decoration: none;
-  overflow-x: hidden;
   position: relative;
+}
+
+a:hover::after {
+  -webkit-transform: none;
+          transform: none;
 }
 
 a::after {
@@ -54,9 +70,15 @@ a::after {
   color: inherit;
   background: currentColor;
   overflow: hidden;
-  bottom: -0.3rem;
+  bottom: 0;
   left: 0;
   width: 100%;
   height: 2px;
+  -webkit-transform: translateX(-50%) scaleX(0);
+          transform: translateX(-50%) scaleX(0);
+  -webkit-transition: -webkit-transform 200ms;
+  transition: -webkit-transform 200ms;
+  transition: transform 200ms;
+  transition: transform 200ms, -webkit-transform 200ms;
 }
 /*# sourceMappingURL=main.css.map */

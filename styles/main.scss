@@ -1,9 +1,25 @@
 body {
   margin: 0;
+  background-color: var(--c-background);
+  color: var(--c-text);
+  min-height: 100%;
+}
+
+* {
+  margin: 0;
+}
+
+h2 {
+  font: var(--fn-m);
+}
+
+.flicker-code {
+  font-family: monospace;
+  color: var(--c-primary);
 }
 
 header {
-  height: 4rem;
+  height: var(--s-header-h);
   margin: 0.5rem 1rem;
   display: flex;
   flex-direction: row;
@@ -13,10 +29,6 @@ header {
   img {
     height: 100%;
     border-radius: 100%;
-  }
-
-  h2 {
-    font: var(--fn-24);
   }
 
   ul {
@@ -29,11 +41,14 @@ header {
 }
 
 a {
-  font: var(--fn-16);
+  font: var(--fn-sm);
   color: inherit;
   text-decoration: none;
-  overflow-x: hidden;
   position: relative;
+
+  &:hover::after {
+    transform: none;
+  }
 
   &::after {
     content: "";
@@ -42,10 +57,11 @@ a {
     color: inherit;
     background: currentColor;
     overflow: hidden;
-    bottom: -0.3rem;
+    bottom: 0;
     left: 0;
     width: 100%;
     height: 2px;
-    // transform: translateX(-100%);
+    transform: translateX(-50%) scaleX(0);
+    transition: transform 200ms;
   }
 }
