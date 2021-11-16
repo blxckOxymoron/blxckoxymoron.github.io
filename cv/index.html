@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<style>
+  html {
+    scroll-behavior: smooth;
+    width: calc(100% - 2rem);
+  }
+
+  :root {
+    --blue: rgb(58, 191, 214);
+    --blgray: rgb(50, 139, 155);
+  }
+
+  .body {
+    display: grid;
+    grid-template-columns: 3fr 10fr;
+    column-gap: 1rem;
+    grid-template-areas:
+      "header header"
+      "nav main";
+    max-width: 90ch;
+    margin: 0 auto;
+    padding: 1rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  header h1 {
+    border-bottom: 1px solid black;
+  }
+
+  .nav {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 10px;
+    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    grid-area: nav;
+    border-radius: .5rem;
+    padding: .5rem;
+    box-shadow: 0px 2px 10px 7px rgba(202, 202, 202, 0.438);
+    align-self: start;
+  }
+
+  .nav ol {
+    list-style: none;
+    padding: 0;
+    margin: 10px;
+  }
+
+  a {
+    color: var(--blgray);
+    position: relative;
+    transition: color 200ms;
+  }
+
+  a:hover,
+  a:focus {
+    color: var(--blue);
+  }
+
+  .nav a::before {
+    content: "→";
+    position: absolute;
+    left: -1rem;
+    color: transparent;
+    transform: translateX(.5em);
+    transition: color 200ms, transform 200ms;
+  }
+
+  .nav a:hover::before,
+  .nav a:focus::before {
+    transform: translateX(0);
+    color: inherit;
+  }
+
+  p {
+    margin: 1rem 0;
+  }
+
+  .main {
+    grid-area: main;
+  }
+
+  header {
+    grid-area: header;
+  }
+
+  section {
+    counter-increment: section;
+    position: relative;
+    margin-left: 20px;
+  }
+
+  section::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: calc(100% - 18px);
+    width: 4px;
+    background-color: currentColor;
+    animation: toBlue 1s forwards;
+    left: -15px;
+    top: 22px;
+  }
+
+  section:not(:last-child)::after {
+    height: calc(100% - 4px);
+  }
+
+  section::before {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    border-radius: 100%;
+    border: 4px solid currentColor;
+    animation: toBlue 1s forwards;
+    top: 2px;
+    left: -22px;
+  }
+
+  @media only screen and (max-width: 520px) {
+    .body {
+      grid-template-areas:
+        "header header"
+        "nav nav"
+        "main main";
+    }
+
+    .nav {
+      width: inherit;
+      display: block;
+      position: static;
+    }
+
+    .nav ol {
+      width: 100%;
+      display: grid;
+      column-gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+
+    .nav li {
+      display: block;
+      width: max-content;
+    }
+  }
+
+  @keyframes toBlue {
+    from {
+      color: transparent;
+      transform: translateY(50px);
+    }
+
+    to {
+      color: var(--blue);
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<div class="body">
+
+  <!-- fkin email -->
+  <header>
+    <h1>Lebenslauf & Interessen</h1>
+    <p>Sehr geehrte Frau Leutner,</p>
+    <p>ich freue mich sehr über die Offenheit für ein Praktikum und möchte ihnen hiermit meinen Lebenslauf zukommen
+      lassen. Sollte es noch irgendwelche offenen Fragen geben, beantworte ich diese gerne. Im Anhang ist zudem auch ein
+      Brief unseres Gymnasiums an Partner.</p>
+  </header>
+  <div class="nav">
+    <!-- gmailll -->
+    <ol>
+      <li><a href="#About">Über mich</a></li>
+      <li><a href="#Schulbildung">Schulbildung</a></li>
+      <li><a href="#Informatik">Informatik</a></li>
+      <li><a href="#Interessen">Interessen</a></li>
+      <li><a href="#Referenzen">Projekte</a></li>
+    </ol>
+  </div>
+  <div class="main">
+    <!-- gmail -->
+
+    <section>
+      <h3 id="About">Über mich</h3>
+      <p>
+        <b>Name:</b> Daniel Bihlmaier <br>
+        <b>Geboren:</b> 23.02.2007 in Pforzheim <br>
+        <b>Email:</b> daniel.m.bihlmaier@gmail.com
+      </p>
+    </section>
+    <section>
+      <h3 id="Schulbildung">Schulbildung</h3>
+      <p>2012 wurde ich in die Arlinger Schule eingeschult.
+        Nach der 4. Klasse wechselte ich 2016 auf das Hebel-Gymnasium-Pforzheim.
+        Dort besuchte ich in der Unterstufe von der 5-7 Klasse das Musikprofil, dannach in der Mittel-/Oberstufe
+        entschied ich mich für das Informatik, Mathematik & Physik (kurz IMP) Profil und bin mit dieser Entscheidung
+        sehr glücklich.
+        Insgesammt sterbe ich einen Abiturabschluss an.</p>
+    </section>
+    <section>
+      <h3 id="Informatik">Informatik Kenntnisse</h3>
+      <h4>Anfang</h4>
+      <p>Meine Erste Erfahrung mit Programmieren war breits in der Grundschule ab der 2. Klasse in der <a
+          href="https://hector-kinderakademie.de/">Hector Akademie</a>.
+        Dort besuchte ich einen Wissenschaftlichen Kurs,
+        in dem wir neben interessanten Physikalischen Experimenten auch fischertechnik Baukästen und später auch LEGO
+        Mindstorms programmieren durften.
+        Privat habe ich mir diese Baukästen auch angeschafft und noch lange nach den Kursen damit gebaut.</p>
+      <p>Zudem lernte ich <a href="https://scratch.mit.edu/users/DB-spieler/">Scratch</a>, mit dem wir ab der 6. Klasse
+        auch in der Schule gearbeitet haben.</p>
+    </section>
+    <section>
+      <h4>Grundlagen</h4>
+      <p>2018 begann ich, "richtige" Programmiersprachen zu lernen. Ich fing mit Python an und lernte damit die
+        Grundlagen. Zudem lernte ich etwas C++, Dart, sowie Java, das wir seit der 9. Klasse auch in der Schule
+        verwenden. Privat programmiere ich mit Java kleine Minecraft-Plugins.</p>
+    </section>
+    <section>
+      <h4>Aktuell</h4>
+      <p>Meistens habe ich zuerst eine Idee und lerne dann das, was ich brauche, um sie umzusetzen. Dazu verwende ich wo
+        es geht TypeScript, was ich als meine
+        lieblings-/haupt Programmiersprache bezeichnen würde. Besonders gefällt mir die moderne, praktische Syntax und
+        die
+        vielen Möglichkeiten von Nodejs.</p>
+    </section>
+    <section>
+      <h3 id="Interessen">Interessen</h3>
+      <p>Seit November 2020 interessiere ich mich besonders für Web-Entwicklung: sowohl Frontend Apps als auch
+        Kommunikation mit Server und Infrastruktur im Backend.</p>
+    </section>
+    <section>
+      <h3>Projekte / Referenzen</h3>
+      <p>Meine aktuellsten Projekte kann man mit Quellcode <a href="https://github.com/blxckOxymoron">hier auf
+          GitHub</a> finden, Scratch Projekte <a href="https://scratch.mit.edu/users/DB-spieler/">hier.</a> <br>
+        Und diese Email habe natürlich auch ich gemacht 😄</p>
+    </section>
+  </div>
+</div>
+
+</html>
